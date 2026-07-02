@@ -8,10 +8,13 @@ function submitForm(event) {
 	city.innerHTML = searchInput.value;
 
 	let apiKey = "9f1739f0t2608f809957ea4ea4ob5f0b";
-	let apiUrl =
-		"https://api.shecodes.io/weather/v1/current?query={query}&key={key}&units={unit}";
+	let apiUrl = "https://api.shecodes.io/weather/v1/current?query=Lisbon&key=9f1739f0t2608f809957ea4ea4ob5f0b&units=metric";
 
-	axios.get(apiUrl).then();
+	function show(response) {
+		console.log(response.data);
+	}
+
+	axios.get(apiUrl).then(show);
 }
 
 searchForm.addEventListener("submit", submitForm);
