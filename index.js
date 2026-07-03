@@ -8,10 +8,18 @@ function submitForm(event) {
 	city.innerHTML = searchInput.value;
 
 	let apiKey = "9f1739f0t2608f809957ea4ea4ob5f0b";
-	let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${searchInput.value}&key=${apiKey}&units=metric`;
+	let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${searchInput.value}&key=${apiKey}&units=imperial`;
 
 	function show(response) {
 		console.log(response.data);
+		let temperatureElement = document.querySelector("#temperature");
+		temperatureElement.innerHTML = Math.round(response.data.temperature.current);
+		let weatherCondition = document.querySelector(".weather-condition");
+		weatherCondition.innerHTML = response.data.condition.description;
+		let windDate = document.querySelector("#wind-data");
+		windDate.innerHTML = `${response.data.wind.speed}km/h`;
+		let humidityDate = document.querySelector("#humidity-data");
+		humidityDate.innerHTML = `${response.data.temperature.humidity}%`;
 	}
 
 	axios.get(apiUrl).then(show);
