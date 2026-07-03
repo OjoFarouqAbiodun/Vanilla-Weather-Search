@@ -1,14 +1,8 @@
 function showData(response) {
 	let temperatureElement = document.querySelector("#temperature");
-	temperatureElement.innerHTML = Math.round(response.data.temperature.current);
 	let weatherCondition = document.querySelector(".weather-condition");
-	weatherCondition.innerHTML = response.data.condition.description;
 	let windDate = document.querySelector("#wind-data");
-	windDate.innerHTML = `${response.data.wind.speed}km/h`;
 	let humidityDate = document.querySelector("#humidity-data");
-	humidityDate.innerHTML = `${response.data.temperature.humidity}%`;
-	city.innerHTML = response.data.city;
-
 	let date = new Date(response.data.time * 1000);
 	let Days = [
 		"Sunday",
@@ -22,6 +16,9 @@ function showData(response) {
 	let day = Days[date.getDay()];
 	let hour = date.getHours();
 	let minute = date.getMinutes();
+	let timeElement = document.querySelector("#time");
+	let iconElement = document.querySelector("#icon");
+
 	if (hour < 10) {
 		hour = `0${hour}`;
 	}
@@ -29,8 +26,13 @@ function showData(response) {
 		minute = `0${minute}`;
 	}
 
-	let timeElement = document.querySelector("#time");
+	temperatureElement.innerHTML = Math.round(response.data.temperature.current);
+	weatherCondition.innerHTML = response.data.condition.description;
+	windDate.innerHTML = `${response.data.wind.speed}km/h`;
+	humidityDate.innerHTML = `${response.data.temperature.humidity}%`;
+	city.innerHTML = response.data.city;
 	timeElement.innerHTML = `${day} ${hour}:${minute}`;
+	iconElement.innerHTML = `<img src="${response.data.condition.icon_url}" />`;
 }
 
 function searchCity(city) {
@@ -51,27 +53,3 @@ let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", submitForm);
 
 searchCity("New York");
-
-// let currentDate = new Date();
-// let Days = [
-// 	"Sunday",
-// 	"Monday",
-// 	"Tuesday",
-// 	"Wednesday",
-// 	"Thursday",
-// 	"Friday",
-// 	"Saturday",
-// ];
-// let Day = Days[currentDate.getDay()];
-// let Hour = currentDate.getHours();
-// let Minute = currentDate.getMinutes();
-
-// if (Hour < 10) {
-// 	Hour = `0${Hour}`;
-// }
-// if (Minute < 10) {
-// 	Minute = `0${Minute}`;
-// }
-
-// let Time = document.querySelector("#time");
-// Time.innerHTML = `${Day} ${Hour}:${Minute}`;
