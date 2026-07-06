@@ -115,6 +115,13 @@ main {
   padding: 0 10px;
 }
 
+.weather-forecast-icon {
+  width: 88px;
+  height: 88px;
+  display: block;
+  margin: 0 auto;
+}
+
 footer {
   text-align: center;
   font-size: 14px;
