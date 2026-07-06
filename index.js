@@ -1,5 +1,12 @@
-function showForecast() {
-	
+function getForecast(city) {
+	let apiKey = "9f1739f0t2608f809957ea4ea4ob5f0b";
+	let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=metric`;
+	axios.get(apiUrl).then(showForecast);
+}
+
+function showForecast(response) {
+	console.log(response.data);
+
 	let days = ["Tue", "Wed", "Thu", "Fri", "Sat"];
 	let forecastHtml = "";
 
@@ -75,4 +82,5 @@ let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", submitForm);
 
 searchCity("New York");
+getForecast();
 showForecast();
