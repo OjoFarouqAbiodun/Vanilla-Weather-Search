@@ -1,3 +1,25 @@
+function showForecast() {
+	
+	let days = ["Tue", "Wed", "Thu", "Fri", "Sat"];
+	let forecastHtml = "";
+
+	days.forEach(function (day) {
+		forecastHtml =
+			forecastHtml +
+			`<div class="weather-forecast-day">
+<div class="weather-forecast-date">${day}</div>
+<div class="weather-forecast-icon"><img src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/clear-sky-day.png"></div>
+<div class="weather-forecast-temperatures">
+	<div class="weather-forecast-temperature"><strong>31°C</strong></div>
+	<div class="weather-forecast-temperature">13°C</div>
+</div>
+</div>`;
+	});
+
+	let forecastElement = document.querySelector("#forecast");
+	forecastElement.innerHTML = forecastHtml;
+}
+
 function showData(response) {
 	let temperatureElement = document.querySelector("#temperature");
 	let weatherCondition = document.querySelector(".weather-condition");
@@ -53,3 +75,4 @@ let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", submitForm);
 
 searchCity("New York");
+showForecast();
