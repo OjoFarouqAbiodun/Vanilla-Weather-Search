@@ -12,7 +12,7 @@ function getForecast(city) {
 }
 
 function showForecast(response) {
-	console.log(response.data);
+	// console.log(response.data);
 
 	let forecastHtml = "";
 
@@ -21,7 +21,7 @@ function showForecast(response) {
 			forecastHtml =
 				forecastHtml +
 				`<div class="weather-forecast-day">
-<div class="weather-forecast-date">${day.time}</div>
+<div class="weather-forecast-date">${formatDay(day.time)}</div>
 <div ><img class="weather-forecast-icon" src=${day.condition.icon_url}></div>
 <div class="weather-forecast-temperatures">
 	<div class="weather-forecast-temperature"><strong>${Math.round(day.temperature.maximum)}°C</strong></div>
